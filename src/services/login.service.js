@@ -13,8 +13,8 @@ const login = async (email, password) => {
   if (!user) {
     return { status: 400, data: { message: 'Invalid fields' } };
   }
-  const { displayName, image, id } = user.dataValues;
-  const token = generateToken({ displayName, image, id });
+  const { id } = user.dataValues;
+  const token = generateToken({ id });
   return { status: 200, data: { token } };
 };
 

@@ -13,6 +13,7 @@ const User = (sequelize, DataTypes) => {
   {
     underscored: true,
     tableName: 'users',
+    timestamps: false,
   });
   return UserModel;
 };
