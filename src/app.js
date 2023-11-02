@@ -1,6 +1,8 @@
 const express = require('express');
 const loginController = require('./controllers/login');
+const userController = require('./controllers/userController');
 const loginMiddleware = require('./middlewares/login');
+const userMiddleware = require('./middlewares/user');
 
 // ...
 
@@ -14,6 +16,7 @@ app.get('/', (_request, response) => {
 app.use(express.json());
 
 app.post('/login', loginMiddleware, loginController.login);
+app.post('/user', userMiddleware, userController.create);
 
 // ...
 

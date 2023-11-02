@@ -1,9 +1,5 @@
-const jwt = require('jsonwebtoken');
 const { User } = require('../models');
-
-const { JWT_SECRET } = process.env;
-
-const generateToken = (payload) => jwt.sign(payload, JWT_SECRET);
+const generateToken = require('../utils/token');
 
 const login = async (email, password) => {
   const user = await User.findOne({
@@ -14,7 +10,7 @@ const login = async (email, password) => {
     return { status: 400, data: { message: 'Invalid fields' } };
   }
   const { id } = user.dataValues;
-  const token = generateToken({ id });
+  const token = generateToken.generateToken({ id });
   return { status: 200, data: { token } };
 };
 
