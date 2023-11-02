@@ -17,8 +17,11 @@ app.get('/', (_request, response) => {
 app.use(express.json());
 
 app.post('/login', loginMiddleware, loginController.login);
+
 app.get('/user', auth, userController.findAll);
 app.post('/user', userMiddleware, userController.create);
+
+app.get('/user/:id', auth, userController.findById);
 
 // ...
 
