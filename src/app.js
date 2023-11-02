@@ -25,6 +25,7 @@ app.post('/user', userMiddleware, userController.create);
 
 app.get('/user/:id', auth, userController.findById);
 
+app.get('/categories', auth, categoryController.findAll);
 app.post('/categories', auth, category, categoryController.create);
 
 // ...
