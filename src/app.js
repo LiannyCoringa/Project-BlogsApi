@@ -2,10 +2,12 @@ const express = require('express');
 const loginController = require('./controllers/login');
 const userController = require('./controllers/userController');
 const categoryController = require('./controllers/categoryController');
+const postController = require('./controllers/postController');
 const loginMiddleware = require('./middlewares/login');
 const userMiddleware = require('./middlewares/user');
 const auth = require('./middlewares/auth');
 const category = require('./middlewares/category');
+const post = require('./middlewares/post');
 
 // ...
 
@@ -27,6 +29,8 @@ app.get('/user/:id', auth, userController.findById);
 
 app.get('/categories', auth, categoryController.findAll);
 app.post('/categories', auth, category, categoryController.create);
+
+app.post('/post', auth, post, postController.create);
 
 // ...
 
