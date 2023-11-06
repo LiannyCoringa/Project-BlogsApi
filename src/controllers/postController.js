@@ -38,10 +38,18 @@ const exclude = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const search = async (req, res) => {
+  const { q } = req.query;
+  const { status, data } = await postService.search(q);
+
+  return res.status(status).json(data);
+};
+
 module.exports = {
   create,
   findAll,
   findById,
   update,
   exclude,
+  search,
 };

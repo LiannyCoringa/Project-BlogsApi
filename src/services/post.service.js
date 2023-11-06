@@ -61,10 +61,22 @@ const exclude = async (id, userId) => {
   return { status: 204, data: {} };
 };
 
+const search = async (q) => {
+  const posts = await BlogPost.findAll({
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+  });
+  const filteredPosts = posts.filter((post) => post.title.includes(q) || post.content.includes(q));
+  return { status: 200, data: filteredPosts };
+};
+
 module.exports = {
   create,
   findAll,
   findById,
   update,
   exclude,
+  search,
 };

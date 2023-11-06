@@ -40,6 +40,8 @@ app.delete('/post/:id', auth, postController.exclude);
 
 app.delete('/user/me', auth, userController.exclude);
 
+app.get('/post/search', auth, postController.search);
+
 // ...
 
 // É importante exportar a constante `app`,
