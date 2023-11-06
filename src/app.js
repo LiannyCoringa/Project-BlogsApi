@@ -33,14 +33,13 @@ app.post('/categories', auth, category, categoryController.create);
 
 app.get('/post', auth, postController.findAll);
 app.post('/post', auth, post, postController.create);
+app.get('/post/search', auth, postController.search);
 
 app.get('/post/:id', auth, postController.findById);
 app.put('/post/:id', auth, postPut, postController.update);
 app.delete('/post/:id', auth, postController.exclude);
 
 app.delete('/user/me', auth, userController.exclude);
-
-app.get('/post/search', auth, postController.search);
 
 // ...
 

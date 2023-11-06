@@ -68,7 +68,9 @@ const search = async (q) => {
       { model: Category, as: 'categories', through: { attributes: [] } },
     ],
   });
-  const filteredPosts = posts.filter((post) => post.title.includes(q) || post.content.includes(q));
+
+  const filteredPosts = posts.filter((postFilter) =>
+    postFilter.title.includes(q) || postFilter.content.includes(q));
   return { status: 200, data: filteredPosts };
 };
 
