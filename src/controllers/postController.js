@@ -21,8 +21,18 @@ const findById = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const update = async (req, res) => {
+  const userId = req.user.id;
+  const { id } = req.params;
+  const { title, content } = req.body;
+  const { status, data } = await postService.update(id, title, content, userId);
+
+  return res.status(status).json(data);
+};
+
 module.exports = {
   create,
   findAll,
   findById,
+  update,
 };
