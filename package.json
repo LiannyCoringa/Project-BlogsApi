@@ -33,7 +33,8 @@
     "dev": "nodemon .",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
     "test:mocha": "mocha",
-    "test:coverage": "nyc mocha"
+    "test:coverage": "nyc mocha",
+    "tudo": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "devDependencies": {
     "chai": "4.3.4",
