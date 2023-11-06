@@ -36,6 +36,7 @@ app.post('/post', auth, post, postController.create);
 
 app.get('/post/:id', auth, postController.findById);
 app.put('/post/:id', auth, postPut, postController.update);
+app.delete('/post/:id', auth, postController.exclude);
 
 // ...
 

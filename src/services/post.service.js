@@ -53,9 +53,18 @@ const update = async (id, title, content, userId) => {
   return newPost;
 };
 
+const exclude = async (id, userId) => {
+  const post = await BlogPost.findByPk(id);
+  if (!post) return { status: 404, data: { message: 'Post does not exist' } };
+  if (post.userId !== userId) return { status: 401, data: { message: 'Unauthorized user' } };
+  await BlogPost.destroy({ where: { id } });
+  return { status: 204, data: {} };
+};
+
 module.exports = {
   create,
   findAll,
   findById,
   update,
+  exclude,
 };
