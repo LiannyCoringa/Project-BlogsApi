@@ -33,6 +33,7 @@ app.post('/categories', auth, category, categoryController.create);
 
 app.get('/post', auth, postController.findAll);
 app.post('/post', auth, post, postController.create);
+
 app.get('/post/search', auth, postController.search);
 
 app.get('/post/:id', auth, postController.findById);
