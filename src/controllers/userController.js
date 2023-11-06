@@ -20,8 +20,16 @@ const findById = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const exclude = async (req, res) => {
+  const { id } = req.user;
+  const { status, data } = await userService.exclude(id);
+
+  return res.status(status).json(data);
+};
+
 module.exports = {
   create,
   findAll,
   findById,
+  exclude,
 };

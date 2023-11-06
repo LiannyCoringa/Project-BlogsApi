@@ -42,8 +42,15 @@ const findById = async (id) => {
   return { status: 200, data: user };
 };
 
+const exclude = async (id) => {
+  await User.destroy({ where: { id } });
+
+  return { status: 204, data: {} };
+};
+
 module.exports = {
   create,
   findAll,
   findById,
+  exclude,
 };
