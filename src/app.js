@@ -30,6 +30,7 @@ app.get('/user/:id', auth, userController.findById);
 app.get('/categories', auth, categoryController.findAll);
 app.post('/categories', auth, category, categoryController.create);
 
+app.get('/post', auth, postController.findAll);
 app.post('/post', auth, post, postController.create);
 
 // ...
